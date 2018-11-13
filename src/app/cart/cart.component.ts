@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   }
 
   onDelete(product: Product) {
-    let indexProduct = this.boughtProducts.indexOf(product);
+    const indexProduct = this.boughtProducts.indexOf(product);
     this.boughtProducts.splice(indexProduct, 1);
   }
 

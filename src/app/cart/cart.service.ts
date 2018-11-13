@@ -10,7 +10,7 @@ export class CartService {
 
   constructor() { }
 
-  getBuyProduct(){
+  getBuyProduct() {
     return this.products.asObservable();
   }
 
