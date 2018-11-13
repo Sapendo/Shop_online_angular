@@ -1,6 +1,2 @@
-<div *ngFor="let product of products" class="card">
-  <h1>{{ product.name }} </h1>
-  <p>{{ product.description }}</p>
-  <p>Price: {{ product.price | currency }}</p>
-  <button (click)="onBuy()">Buy</button>
-</div>
+<app-product-component *ngFor="let product of products"
+  [product]="product"></app-product-component>

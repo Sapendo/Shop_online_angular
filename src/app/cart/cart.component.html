@@ -1,0 +1,9 @@
+<div *ngIf="boughtProducts.length; else elseBlock">
+  <div *ngFor="let product of boughtProducts" class="card">
+    <h1>{{ product.name }} </h1>
+    <p>{{ product.description }}</p>
+    <p>Price: {{ product.price | currency }}</p>
+    <button (click)="onDelete(product)">Delete</button>
+  </div>
+</div>
+<ng-template #elseBlock>The cart is empty! Buy something</ng-template>
