@@ -1,9 +1,11 @@
-<div *ngIf="boughtProducts.length; else elseBlock">
-  <div *ngFor="let product of boughtProducts" class="card">
-    <h1>{{ product.name }} </h1>
-    <p>{{ product.description }}</p>
-    <p>Price: {{ product.price | currency }}</p>
-    <button (click)="onDelete(product)">Delete</button>
-  </div>
+<div *ngIf="boughtProducts.length; else emptyCart">
+  <app-cart-item *ngFor="let product of boughtProducts"
+    [product]="product"
+    (delete)="onDelete(product)"></app-cart-item>
+  <p>You but {{count}}
+    <ng-container *ngIf="count === 1; else pluralityBlock">product. </ng-container>
+    Total: {{totalSum | currency}}.
+  </p>
 </div>
-<ng-template #elseBlock>The cart is empty! Buy something</ng-template>
+<ng-template #emptyCart>The cart is empty! Buy something</ng-template>
+<ng-template #pluralityBlock>products. </ng-template>
