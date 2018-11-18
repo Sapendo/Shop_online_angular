@@ -1,6 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy } from '@angular/core';
 import { Product } from 'src/app/interface/product';
-import { CartService } from 'src/app/cart/cart.service';
 
 enum Category {
   Mobile,
@@ -16,11 +20,16 @@ enum Category {
 export class ProductComponentComponent {
 
   @Input() product: Product;
+  @Output() buy: EventEmitter<Product> = new EventEmitter();
 
-  constructor(private cartService: CartService) { }
+  constructor() { }
 
   onBuy() {
-    this.cartService.addBuyProduct(this.product);
+    this.buy.emit();
+  }
+
+  isDisabled(): boolean {
+    return this.product.count <= 0;
   }
 
 }
